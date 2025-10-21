@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "75a403cd-7b04-4b42-a229-3303c392b1ab",
+		"name": "buuking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18182634"
+	},
+	"item": [
+		{
+			"name": "Cancel bookings by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3476/bookings/cmh0q8qm1000197xzhhxjvc2b",
+					"host": [
+						"localhost"
+					],
+					"port": "3476",
+					"path": [
+						"bookings",
+						"cmh0q8qm1000197xzhhxjvc2b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get bookings by Id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3476/bookings/cmh0q8qm1000197xzhhxjvc2b",
+					"host": [
+						"localhost"
+					],
+					"port": "3476",
+					"path": [
+						"bookings",
+						"cmh0q8qm1000197xzhhxjvc2b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get bookings list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3476/bookings",
+					"host": [
+						"localhost"
+					],
+					"port": "3476",
+					"path": [
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm bookings by Id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3476/bookings/cmh0qcl3o000797xzdfzdwnj9/confirm",
+					"host": [
+						"localhost"
+					],
+					"port": "3476",
+					"path": [
+						"bookings",
+						"cmh0qcl3o000797xzdfzdwnj9",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"seed-user-1\",\n  \"resourceId\": \"seed-resource-1\",\n  \"start\": \"2026-01-01T10:00:00Z\",\n  \"end\": \"2026-01-01T11:00:00Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3476/bookings",
+					"host": [
+						"localhost"
+					],
+					"port": "3476",
+					"path": [
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
