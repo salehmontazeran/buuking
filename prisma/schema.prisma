@@ -1,0 +1,62 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id       String    @id @default(cuid())
+    email    String    @unique
+    bookings Booking[]
+}
+
+model Resource {
+    id       String    @id @default(cuid())
+    name     String    @unique
+    bookings Booking[]
+}
+
+model Booking {
+    id         String        @id @default(cuid())
+    userId     String
+    resourceId String
+    start      DateTime
+    end        DateTime
+    status     BookingStatus
+    createdAt  DateTime      @default(now())
+    updatedAt  DateTime      @updatedAt
+
+    user     User             @relation(fields: [userId], references: [id])
+    resource Resource         @relation(fields: [resourceId], references: [id])
+    history  BookingHistory[]
+
+    @@index([resourceId, start])
+    @@index([resourceId, end])
+}
+
+model BookingHistory {
+    id        String           @id @default(cuid())
+    bookingId String
+    eventType BookingEventType
+    payload   Json
+    createdAt DateTime         @default(now())
+
+    booking Booking @relation(fields: [bookingId], references: [id])
+
+    @@index([bookingId, createdAt])
+}
+
+enum BookingStatus {
+    PENDING
+    CONFIRMED
+    CANCELLED
+}
+
+enum BookingEventType {
+    CREATED
+    CONFIRMED
+    CANCELLED
+}
